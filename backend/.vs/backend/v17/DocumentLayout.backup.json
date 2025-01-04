@@ -1,0 +1,89 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "F:\\Project\\Code Dotnet\\backend\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{53C9D6CF-01F9-43F7-BA5C-D1BADF89F07B}|tickethub\\tickethub.csproj|f:\\project\\code dotnet\\backend\\tickethub\\repositories\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53C9D6CF-01F9-43F7-BA5C-D1BADF89F07B}|tickethub\\tickethub.csproj|solutionrelative:tickethub\\repositories\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53C9D6CF-01F9-43F7-BA5C-D1BADF89F07B}|tickethub\\tickethub.csproj|f:\\project\\code dotnet\\backend\\tickethub\\entities\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53C9D6CF-01F9-43F7-BA5C-D1BADF89F07B}|tickethub\\tickethub.csproj|solutionrelative:tickethub\\entities\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53C9D6CF-01F9-43F7-BA5C-D1BADF89F07B}|tickethub\\tickethub.csproj|f:\\project\\code dotnet\\backend\\tickethub\\entities\\moviecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53C9D6CF-01F9-43F7-BA5C-D1BADF89F07B}|tickethub\\tickethub.csproj|solutionrelative:tickethub\\entities\\moviecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53C9D6CF-01F9-43F7-BA5C-D1BADF89F07B}|tickethub\\tickethub.csproj|f:\\project\\code dotnet\\backend\\tickethub\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53C9D6CF-01F9-43F7-BA5C-D1BADF89F07B}|tickethub\\tickethub.csproj|solutionrelative:tickethub\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MovieCast.cs",
+              "DocumentMoniker": "F:\\Project\\Code Dotnet\\backend\\tickethub\\Entities\\MovieCast.cs",
+              "RelativeDocumentMoniker": "tickethub\\Entities\\MovieCast.cs",
+              "ToolTip": "F:\\Project\\Code Dotnet\\backend\\tickethub\\Entities\\MovieCast.cs*",
+              "RelativeToolTip": "tickethub\\Entities\\MovieCast.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-04T11:39:33.917Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BaseEntity.cs",
+              "DocumentMoniker": "F:\\Project\\Code Dotnet\\backend\\tickethub\\Entities\\BaseEntity.cs",
+              "RelativeDocumentMoniker": "tickethub\\Entities\\BaseEntity.cs",
+              "ToolTip": "F:\\Project\\Code Dotnet\\backend\\tickethub\\Entities\\BaseEntity.cs",
+              "RelativeToolTip": "tickethub\\Entities\\BaseEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-04T11:40:47.701Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "F:\\Project\\Code Dotnet\\backend\\tickethub\\Program.cs",
+              "RelativeDocumentMoniker": "tickethub\\Program.cs",
+              "ToolTip": "F:\\Project\\Code Dotnet\\backend\\tickethub\\Program.cs",
+              "RelativeToolTip": "tickethub\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-04T11:32:06.16Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "F:\\Project\\Code Dotnet\\backend\\tickethub\\Repositories\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "tickethub\\Repositories\\ApplicationDbContext.cs",
+              "ToolTip": "F:\\Project\\Code Dotnet\\backend\\tickethub\\Repositories\\ApplicationDbContext.cs*",
+              "RelativeToolTip": "tickethub\\Repositories\\ApplicationDbContext.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-04T11:19:46.627Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
