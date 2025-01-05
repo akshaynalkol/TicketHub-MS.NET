@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 const TermsAndConditionsModel = () => {
   return (
     <div id="terms-condition" className="modal ">
-      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div className="modal-content rounded" >
           <div className="modal-header border">
             <h5 className="modal-title">Terms & Conditions</h5>

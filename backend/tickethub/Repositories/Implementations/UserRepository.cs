@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using tickethub.Repositories.Interfaces;
+using tickethub.Services.Implementations;
 
 namespace tickethub.Repositories.Implementations
 {
@@ -57,7 +58,14 @@ namespace tickethub.Repositories.Implementations
         {
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Users.Update(user);
+                var existingUser = await ctx.Users.FindAsync(user.Id);
+                                                                       
+                // Update specific fields
+                ctx.Entry(existingUser).CurrentValues.SetValues(user);
+
+                // Prevent Password from being updated
+                ctx.Entry(existingUser).Property(u => u.Password).IsModified = false;
+
                 await ctx.SaveChangesAsync();
             }
         }

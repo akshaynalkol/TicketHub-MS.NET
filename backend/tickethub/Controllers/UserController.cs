@@ -35,9 +35,7 @@ namespace tickethub.Controllers
                 user.Email,
                 user.Phone,
                 user.Gender,
-                user.MaritalStatus,
-                user.CreatedOn,
-                user.UpdatedOn
+                user.MaritalStatus
             }).ToList();
 
             // Return status code 200 with users list
@@ -65,9 +63,7 @@ namespace tickethub.Controllers
                 user.Email,
                 user.Phone,
                 user.Gender,
-                user.MaritalStatus,
-                user.CreatedOn,
-                user.UpdatedOn
+                user.MaritalStatus
             };
 
             // Return status code 200 with user object
@@ -129,7 +125,14 @@ namespace tickethub.Controllers
             // Validate the model
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                var errors = ModelState
+                        .Where(ms => ms.Value.Errors.Any())
+                        .ToDictionary(
+                            kvp => kvp.Key,
+                            kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).ToList()
+                        );
+
+                return BadRequest(new { errors });
             }
 
             await userService.AddAsync(user);
@@ -146,7 +149,7 @@ namespace tickethub.Controllers
             if (id != user.Id)
             {
                 // Return status code 400 if ID mismatch
-                return BadRequest(new { message = "User ID mismatch" });  
+                return BadRequest(new { message = "User ID mismatch" });
             }
 
             var existingUser = await userService.GetByIdAsync(id);

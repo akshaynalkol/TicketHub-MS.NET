@@ -7,8 +7,6 @@ namespace tickethub.DTO
     public class AuthenticateResponse
     {
         public int Id { get; set; }
-        public DateTime CreatedOn { get; set; }
-        public DateTime UpdatedOn { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
@@ -20,8 +18,6 @@ namespace tickethub.DTO
         public AuthenticateResponse(User user, string token)
         {
             Id = user.Id;
-            CreatedOn = user.CreatedOn;
-            UpdatedOn = user.UpdatedOn;
             Name = user.Name;
             Email = user.Email;
             Phone = user.Phone;

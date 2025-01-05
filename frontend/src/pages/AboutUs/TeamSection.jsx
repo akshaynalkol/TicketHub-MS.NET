@@ -4,7 +4,7 @@ import './TeamSection.css';
 const teamMembers = [
   {
     name: 'Akshay Nalkol',
-    image: '/images/member1.jpeg',
+    image: '/images/member1.png',
     email: 'akshaynalkol2001@gmail.com',
     linkedin: 'https://www.linkedin.com/in/akshay-nalkol-185065230',
     github: 'https://github.com/akshaynalkol',
@@ -34,7 +34,7 @@ const teamMembers = [
     name: 'Shruti Bangar',
     image: '/images/member5.jpeg',
     email: 'bangarshruti9@gmail.com',
-    linkedin: 'https://www.linkedin.com/in/shruti-bangar',
+    linkedin: 'https://www.linkedin.com/in/shruti-bangar-892376313/',
     github: 'https://github.com/bshruti-15/CDAC',
   },
 ];

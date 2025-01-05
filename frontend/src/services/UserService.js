@@ -11,12 +11,11 @@ export function signUpUser(user) {
 
 export function updateUser(id, user) {
     let data=JSON.parse(sessionStorage.getItem('user_details'));
-    console.log(data);
     return axios.put(`${USER_BASE_URL}${id}`, user,
         {
             headers: {
                 Authorization: `Bearer ${data.token}`
-            }
+            }  
         }
     );
 }
