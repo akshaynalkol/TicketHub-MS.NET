@@ -5,24 +5,36 @@ namespace tickethub.Repositories.Implementations
 {
     public class UserRepository : IUserRepository
     {
-        public Task AddAsync(User user)
+        public async Task AddAsync(User user)
         {
-            throw new NotImplementedException();
+            using (var ctx = new ApplicationDbContext())
+            {
+                ctx.Users.Add(user);
+                await ctx.SaveChangesAsync();
+            }
         }
 
-        public Task<User> AuthenticateAsync(string email, string password)
+        public async Task<User> AuthenticateAsync(string email, string password)
         {
-            throw new NotImplementedException();
+            using (var ctx = new ApplicationDbContext()) { 
+                return await ctx.Users.FirstOrDefaultAsync(u=>u.Email == email && u.Password==password);
+            }
         }
 
-        public Task DeleteAsync(int id)
+        public async Task<User> ValidateEmailAsync(string email)
         {
-            throw new NotImplementedException();
+            using (var ctx = new ApplicationDbContext())
+            {
+                return await ctx.Users.FirstOrDefaultAsync(u => u.Email == email);
+            }
         }
 
-        public Task<User> GetByIdAsync(int id)
+        public async Task<User> ValidatePhoneAsync(string phone)
         {
-            throw new NotImplementedException();
+            using (var ctx = new ApplicationDbContext())
+            {
+                return await ctx.Users.FirstOrDefaultAsync(u => u.Phone == phone);
+            }
         }
 
         public async Task<List<User>> GetAsync()
@@ -33,11 +45,29 @@ namespace tickethub.Repositories.Implementations
             }
         }
 
+        public async Task<User> GetByIdAsync(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                return await ctx.Users.FindAsync(id);
+            }
+        }
+
         public async Task UpdateAsync(User user)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Users.Update(user);
+                await ctx.SaveChangesAsync();
+            }
+        }
+
+        public async Task DeleteAsync(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                User user= await ctx.Users.FindAsync(id);
+                ctx.Users.Remove(user);
                 await ctx.SaveChangesAsync();
             }
         }

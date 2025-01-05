@@ -13,10 +13,10 @@ public class Booking : BaseEntity
     public string PaymentStatus { get; set; }
 
     [ForeignKey("Showtime")]
-    public long ShowtimeId { get; set; }
+    public int ShowtimeId { get; set; }
     public Showtime Showtime { get; set; }
 
     [ForeignKey("User")]
-    public long UserId { get; set; }
+    public int UserId { get; set; }
     public User User { get; set; }
 }

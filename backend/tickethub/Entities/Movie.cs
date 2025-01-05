@@ -38,6 +38,6 @@ public class Movie : BaseEntity
     public string Type { get; set; }
 
     [ForeignKey("MovieCast")]
-    public long MovieCastId { get; set; }
+    public int MovieCastId { get; set; }
     public MovieCast MovieCasts { get; set; }
 }

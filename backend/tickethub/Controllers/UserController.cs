@@ -1,11 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Numerics;
+using Microsoft.AspNetCore.Mvc;
 using tickethub.DTO;
 using tickethub.Services.Interfaces;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
 namespace tickethub.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class UserController : ControllerBase
     {
@@ -19,16 +21,32 @@ namespace tickethub.Controllers
 
         // Get all users
         [HttpGet]
+        [Helper.Authorize]
         public async Task<IActionResult> GetAsync()
         {
             var users = await userService.GetAsync();
 
+            // Create a custom object for each user without the 'Password' field
+            var userResponses = users.Select(user => new
+            {
+                user.Id,
+                user.Name,
+                user.Dob,
+                user.Email,
+                user.Phone,
+                user.Gender,
+                user.MaritalStatus,
+                user.CreatedOn,
+                user.UpdatedOn
+            }).ToList();
+
             // Return status code 200 with users list
-            return Ok(users);  
+            return Ok(userResponses);  
         }
 
         // Get user by ID
         [HttpGet("{id}")]
+        [Helper.Authorize]
         public async Task<IActionResult> GetByIdAsync(int id)
         {
             var user = await userService.GetByIdAsync(id);
@@ -37,35 +55,91 @@ namespace tickethub.Controllers
                 // Return status code 404 if not found
                 return NotFound(new { message = "User not found" }); 
             }
+
+            // Create a custom object for each user without the 'Password' field
+            var response = new
+            {
+                user.Id,
+                user.Name,
+                user.Dob,
+                user.Email,
+                user.Phone,
+                user.Gender,
+                user.MaritalStatus,
+                user.CreatedOn,
+                user.UpdatedOn
+            };
+
             // Return status code 200 with user object
-            return Ok(user);  
+            return Ok(response);  
         }
 
         // Authenticate user
         [HttpPost("authenticate")]
-        public async Task<IActionResult> AuthenticateAsync([FromBody] LoginDTO loginDto)
+        public async Task<IActionResult> AuthenticateAsync([FromBody] AuthenticateRequest authenticateRequest)
         {
-            var user = await userService.AuthenticateAsync(loginDto.Email, loginDto.Password);
-            if (user == null)
+            var response = await userService.AuthenticateAsync(authenticateRequest.Email, authenticateRequest.Password);
+            if (response == null)
             {
                 // Return status code 401 if authentication fails
                 return Unauthorized(new { message = "Invalid credentials" });  
             }
             // Return status code 200 with authenticated user data
-            return Ok(user);  
+            return Ok(response);  
+        }
+
+        // Authenticate Email
+        [HttpGet("validateEmail")]
+        public async Task<IActionResult> ValidateEmailAsync(string email)
+        {
+            var response = await userService.ValidateEmailAsync(email);
+            if (response!=null)
+            {
+                // Return status code 401 if authentication fails
+                return Unauthorized(new { message = "Phone number already in use" });
+            }
+            else
+            {
+                // Return status code 200 with authenticated user data
+                return Ok("Phone number is available");
+            }
+        }
+
+        // Authenticate Phone
+        [HttpGet("validatePhone")]
+        public async Task<IActionResult> ValidatePhoneAsync(string phone)
+        {
+            var response = await userService.ValidatePhoneAsync(phone);
+            if (response != null)
+            {
+                // Return status code 401 if authentication fails
+                return Unauthorized(new { message = "Phone number already in use" });
+            }
+            else
+            {
+                // Return status code 200 with authenticated user data
+                return Ok("Phone number is available");
+            }
         }
 
         // Add a new user
         [HttpPost]
         public async Task<IActionResult> AddAsync([FromBody] User user)
         {
+            // Validate the model
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             await userService.AddAsync(user);
 
             // Return status code 201 (Created)
-            return CreatedAtAction(nameof(GetByIdAsync), new { id = user.Id }, new { message = "User Created Successfully" });  
+            return StatusCode(StatusCodes.Status201Created, new { message = "User Created Successfully" });
         }
 
         // Update an existing user
+        [Helper.Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateAsync(int id, [FromBody] User user)
         {
@@ -88,6 +162,7 @@ namespace tickethub.Controllers
         }
 
         // Delete a user by ID
+        [Helper.Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {

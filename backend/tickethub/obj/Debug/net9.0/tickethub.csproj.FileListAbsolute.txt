@@ -101,3 +101,12 @@ F:\Project\Code Dotnet\backend\tickethub\obj\Debug\net9.0\refint\tickethub.dll
 F:\Project\Code Dotnet\backend\tickethub\obj\Debug\net9.0\tickethub.pdb
 F:\Project\Code Dotnet\backend\tickethub\obj\Debug\net9.0\tickethub.genruntimeconfig.cache
 F:\Project\Code Dotnet\backend\tickethub\obj\Debug\net9.0\ref\tickethub.dll
+F:\Project\Code Dotnet\backend\tickethub\obj\Debug\net9.0\tickethub.sourcelink.json
+F:\Project\Code Dotnet\backend\tickethub\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+F:\Project\Code Dotnet\backend\tickethub\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
+F:\Project\Code Dotnet\backend\tickethub\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
+F:\Project\Code Dotnet\backend\tickethub\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
+F:\Project\Code Dotnet\backend\tickethub\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
+F:\Project\Code Dotnet\backend\tickethub\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+F:\Project\Code Dotnet\backend\tickethub\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
+F:\Project\Code Dotnet\backend\tickethub\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll

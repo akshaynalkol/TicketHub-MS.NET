@@ -1,5 +1,5 @@
 public enum MaritalStatus
 {
-    Married,
-    Unmarried
+    MARRIED,
+    UNMARRIED
 }

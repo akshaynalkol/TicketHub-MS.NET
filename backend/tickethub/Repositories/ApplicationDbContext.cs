@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
 
 namespace tickethub.Repositories
 {
@@ -23,7 +24,7 @@ namespace tickethub.Repositories
         // You can also override SaveChangesAsync for async operations
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
-            var currentDate = DateTime.UtcNow;
+            var currentDate = DateTime.Now;
 
             foreach (var entry in ChangeTracker.Entries<BaseEntity>())
             {

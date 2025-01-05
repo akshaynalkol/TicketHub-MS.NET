@@ -2,15 +2,23 @@ import axios from "axios";
 import { USER_BASE_URL } from "../constants/ApiConstants";
 
 export function signInUser(user) {
-    return axios.post(`${USER_BASE_URL}signin`, user);
+    return axios.post(`${USER_BASE_URL}authenticate`, user);
 }
 
 export function signUpUser(user) {
-    return axios.post(`${USER_BASE_URL}signup`, user);
+    return axios.post(`${USER_BASE_URL}`, user);
 }
 
 export function updateUser(id, user) {
-    return axios.put(`${USER_BASE_URL}updateUser/${id}`, user);
+    let data=JSON.parse(sessionStorage.getItem('user_details'));
+    console.log(data);
+    return axios.put(`${USER_BASE_URL}${id}`, user,
+        {
+            headers: {
+                Authorization: `Bearer ${data.token}`
+            }
+        }
+    );
 }
 
 export function validateEmail(email) {

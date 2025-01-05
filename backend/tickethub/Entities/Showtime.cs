@@ -11,10 +11,10 @@ public class Showtime : BaseEntity
     public int AvailableSeats { get; set; }
 
     [ForeignKey("Movie")]
-    public long MovieId { get; set; }
+    public int MovieId { get; set; }
     public Movie Movie { get; set; }
 
     [ForeignKey("Theater")]
-    public long TheaterId { get; set; }
+    public int TheaterId { get; set; }
     public Theater Theater { get; set; }
 }

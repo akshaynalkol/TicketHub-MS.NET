@@ -15,6 +15,6 @@ public class Payment : BaseEntity
     public string PaymentStatus { get; set; }
 
     [ForeignKey("Booking")]
-    public long BookingId { get; set; }
+    public int BookingId { get; set; }
     public Booking Booking { get; set; }
 }

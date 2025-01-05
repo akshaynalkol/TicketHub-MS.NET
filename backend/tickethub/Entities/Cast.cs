@@ -11,6 +11,6 @@ public class Cast : BaseEntity
     public string ProfilePath { get; set; }
 
     [ForeignKey("MovieCast")]
-    public long MovieCastId { get; set; }
+    public int MovieCastId { get; set; }
     public MovieCast MovieCast { get; set; }
 }

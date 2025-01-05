@@ -9,6 +9,7 @@ public class User : BaseEntity
     public string Name { get; set; }
 
     [MaxLength(25)]
+    [EmailAddress(ErrorMessage ="Email is incorrect")]
     //[Index(IsUnique = true)]
     public string Email { get; set; }
 
@@ -18,11 +19,12 @@ public class User : BaseEntity
 
     public DateOnly Dob { get; set; }
 
-    public Gender Gender { get; set; }
+    [MaxLength(25)]
+    public string Gender { get; set; }
 
-    public MaritalStatus MaritalStatus { get; set; }
+    [MaxLength(25)]
+    public string MaritalStatus { get; set; }
 
-    [JsonIgnore]
     [MaxLength(50)]
     public string Password { get; set; }
 }

@@ -1,14 +1,21 @@
+using tickethub.Helper;
 using tickethub.Repositories;
+using tickethub.Repositories.Implementations;
 using tickethub.Repositories.Interfaces;
+using tickethub.Services.Implementations;
 using tickethub.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddScoped<IUserRepository,IUserRepository>();
-builder.Services.AddScoped<IUserService,IUserService>();
+builder.Services.AddScoped<IUserRepository,UserRepository>();
+builder.Services.AddScoped<IUserService,UserService>();
 
 builder.Services.AddControllers();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+});
 
 var app = builder.Build();
 
@@ -19,7 +26,9 @@ using (var context = new ApplicationDbContext())
 }
 
 // Configure the HTTP request pipeline.
-
+app.UseCors("AllowAll");
+app.UseMiddleware<JwtMiddleware>();
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

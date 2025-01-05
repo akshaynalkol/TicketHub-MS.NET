@@ -1,4 +1,7 @@
-﻿using tickethub.Repositories.Interfaces;
+﻿using tickethub.DTO;
+using tickethub.Helper;
+using tickethub.Repositories;
+using tickethub.Repositories.Interfaces;
 using tickethub.Services.Interfaces;
 
 namespace tickethub.Services.Implementations
@@ -6,40 +9,59 @@ namespace tickethub.Services.Implementations
     public class UserService : IUserService
     {
         private IUserRepository userRepository;
+        private IConfiguration configuration;
 
-        public UserService(IUserRepository userRepository)
+        public UserService(IUserRepository userRepository,IConfiguration configuration)
         {
             this.userRepository = userRepository;
+            this.configuration= configuration;
+        }
+        public async Task<AuthenticateResponse> AuthenticateAsync(string email, string password)
+        {
+            User user=await userRepository.AuthenticateAsync(email, password);
+            if (user == null) return null;
+            // Authentication successful so generate jwt token
+            JwtTokenGenerator jwtTokenGenerator = new JwtTokenGenerator(configuration);
+;           var token = jwtTokenGenerator.generateJwtToken(user);
+            return new AuthenticateResponse(user, token);
         }
 
-        public Task AddAsync(User user)
+        public async Task<User> ValidateEmailAsync(string email)
         {
-            throw new NotImplementedException();
+            return await userRepository.ValidateEmailAsync(email);
         }
 
-        public Task<User> AuthenticateAsync(string email, string password)
+        public async Task<User> ValidatePhoneAsync(string phone)
         {
-            throw new NotImplementedException();
+            using (var ctx = new ApplicationDbContext())
+            {
+                return await userRepository.ValidatePhoneAsync(phone);
+            }
         }
 
-        public Task DeleteAsync(int id)
+        public async Task AddAsync(User user)
         {
-            throw new NotImplementedException();
+            await userRepository.AddAsync(user);
         }
 
-        public Task<List<User>> GetAsync()
+        public async Task<List<User>> GetAsync()
         {
-            throw new NotImplementedException();
+            return await userRepository.GetAsync(); 
         }
 
-        public Task<User> GetByIdAsync(int id)
+        public async Task<User> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await userRepository.GetByIdAsync(id);
         }
 
         public async Task UpdateAsync(User user)
         {
             await userRepository.UpdateAsync(user);
+        }
+
+        public async Task DeleteAsync(int id)
+        {
+            await userRepository.DeleteAsync(id);
         }
     }
 }
