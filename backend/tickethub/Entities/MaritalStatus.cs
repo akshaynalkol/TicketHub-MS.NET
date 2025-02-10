@@ -1,5 +1,11 @@
+//public enum MaritalStatus
+//{
+//    MARRIED,
+//    UNMARRIED
+//}
+
 public enum MaritalStatus
 {
-    MARRIED,
-    UNMARRIED
+    Married,
+    Unmarried
 }

@@ -1,4 +1,5 @@
 ﻿using tickethub.DTO;
+using tickethub.Entities;
 using tickethub.Helper;
 using tickethub.Repositories;
 using tickethub.Repositories.Interfaces;
@@ -10,11 +11,13 @@ namespace tickethub.Services.Implementations
     {
         private IUserRepository userRepository;
         private IConfiguration configuration;
+        private IEmailService emailService;
 
-        public UserService(IUserRepository userRepository,IConfiguration configuration)
+        public UserService(IUserRepository userRepository,IConfiguration configuration, IEmailService emailService)
         {
             this.userRepository = userRepository;
-            this.configuration= configuration;
+            this.configuration = configuration;
+            this.emailService = emailService;
         }
         public async Task<AuthenticateResponse> AuthenticateAsync(string email, string password)
         {
@@ -41,7 +44,29 @@ namespace tickethub.Services.Implementations
 
         public async Task AddAsync(User user)
         {
+            //Console.WriteLine("UserService.AddAsync called");
+
             await userRepository.AddAsync(user);
+
+            var emailDetails = new EmailDetails
+            {
+                Recipient = user.Email,
+                Subject = "Welcome to TicketHub!",
+                MsgBody = $"Hello {user.Name},\n\nThank you for signing up at TicketHub! We are excited to have you on board.\n\nBest Regards,\nTicketHub Team",
+                Attachment = "D:/CDAC/TICKETHUB PROJECT/SendEmail/QP-WJP.pdf"
+            };
+
+            //await emailService.SendSimpleMail(emailDetails);
+
+            if (!string.IsNullOrEmpty(emailDetails.Attachment) && File.Exists(emailDetails.Attachment))
+            {
+                await emailService.SendMailWithAttachment(emailDetails);
+            }
+            else
+            {
+                await emailService.SendSimpleMail(emailDetails);
+            }
+
         }
 
         public async Task<List<User>> GetAsync()

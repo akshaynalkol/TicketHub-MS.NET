@@ -1,19 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CardComp from '../../components/CardComp';
 import Filter from '../../components/Filter';
-import { getNowPlayingMovies } from '../../services/MovieService';
 
 export default function Movies() {
+    const [filters, setFilters] = useState({
+        status: "",
+        category: "",
+        rating: ""
+    });               
+
     return (
         <>
             <div className='container'>
-                <div className='row align-items-start'>
+                <div className='row gx-5 align-items-start'>
                     <div className='col-3 d-none d-lg-inline-block'>
-                        <Filter />
+                        <Filter filters={filters} setFilters={setFilters}/>
                     </div>
                     <div className='col-lg-9'>
-                        <CardComp heading1='Movies' heading2='Coming Soon'
-                         getMovies={getNowPlayingMovies} path='/movies-upcoming'/>
+                        <CardComp filters={filters}/>
                     </div>
                 </div>
             </div>

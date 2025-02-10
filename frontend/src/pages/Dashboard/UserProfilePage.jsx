@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import profile from '../../assets/profile.png';
 import { updateUser } from '../../services/UserService';
 import { NavLink, useNavigate, useOutletContext } from 'react-router-dom';
+import { getBookingByUser } from '../../services/BookingService';
 
 const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -14,17 +15,10 @@ const UserProfilePage = () => {
     const navigate = useNavigate();
     const { setUser } = useOutletContext();
     const [isEditing, setIsEditing] = useState(false);
-    // const [userData, setUserData] = useState({
-    //     name: 'Farah Khan',
-    //     email: 'farah@gmail.com',
-    //     phone: '9754646993',
-    //     gender: 'Female',
-    //     maritalStatus: 'Unmarried',
-    //     dateOfBirth: '1997-02-24',
-    // });
     const [userData, setUserData] = useState(JSON.parse(sessionStorage.getItem('user_details')));
     const [originalData, setOriginalData] = useState({ ...userData });
     const [activeTab, setActiveTab] = useState('personalDetails');
+    const [bookings, setBookings] = useState([]);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -47,7 +41,7 @@ const UserProfilePage = () => {
             toast.success(res.data.message);
             sessionStorage.setItem("user_details", JSON.stringify(userData));
         } catch (error) {
-            console.log(error);       
+            // console.log(error);       
             toast.error(error.response?.data?.message || "An error occurred");
         }
     };
@@ -69,9 +63,20 @@ const UserProfilePage = () => {
         navigate('/');
     }
 
+    const loadAllBooking = async () => {
+        let res = await getBookingByUser(userData.id);
+        // console.log(res);
+
+        setBookings(res.data);
+    }
+
+    useEffect(() => {
+        loadAllBooking();
+    }, []);
+
     return (
-        <div className="container pt-4">
-            <div className="bg-light py-4 mb-3 d-flex align-items-center">
+        <div className="container py-5">
+            <div className="bg-light p-4 mb-3 d-flex align-items-center">
                 <img
                     src={profile}
                     alt="Profile"
@@ -131,9 +136,9 @@ const UserProfilePage = () => {
 
                 </div>
 
-                <div className="col-md-8 p-4">
+                <div className="col-lg-9 col-md-8">
                     {activeTab === 'personalDetails' ? (
-                        <div>
+                        <div className='shadow-sm p-4'>
                             <div className="d-flex justify-content-between align-items-center mb-4">
                                 <h2 className="fw-bold">Contact Information</h2>
 
@@ -145,7 +150,7 @@ const UserProfilePage = () => {
                             </div>
 
                             {!isEditing ? (
-                                <div className="bg-white p-4 rounded shadow-sm">
+                                <div className="bg-white rounded">
                                     <div className="row mb-3">
                                         <div className="col-6">
                                             <strong>Full Name</strong>
@@ -262,9 +267,37 @@ const UserProfilePage = () => {
                         </div>
                     ) : activeTab === 'myBookings' ? (
                         <div className="bg-white p-4 rounded shadow-sm">
-                            <h4>No Booking Available</h4>
-                            <p>Movie bookings & food orders will appear here</p>
-                            <NavLink to='/' className="btn btn-warning">Book</NavLink>
+                            {
+                                !bookings ?
+                                    <>
+                                        <h4>No Booking Available</h4>
+                                        <p>Movie bookings & food orders will appear here</p>
+                                        <NavLink to='/movies' className="btn btn-warning">Book</NavLink>
+                                    </> :
+                                    <>
+                                        <h3 className='fw-bold mb-4'>All Bookings</h3>
+                                        <table className="table table-bordered table-hovered table-striped text-center">
+                                            <thead>
+                                                <tr>
+                                                    <th>User</th>
+                                                    <th>Movie</th>
+                                                    <th>Date</th>
+                                                    <th>No. Of Seat</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {bookings.map((booking) => (
+                                                    <tr key={booking.id}>
+                                                        <td>{booking.bookingDate}</td>
+                                                        <td>{booking.showtime.movie.title}</td>
+                                                        <td>{booking.showtime.theater.name}</td>
+                                                        <td>{booking.noOfSeat}</td>
+                                                    </tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
+                                    </>
+                            }
                         </div>
                     ) : null}
                 </div>

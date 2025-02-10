@@ -110,3 +110,6 @@ F:\Project\Code Dotnet\backend\tickethub\bin\Debug\net9.0\Microsoft.IdentityMode
 F:\Project\Code Dotnet\backend\tickethub\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 F:\Project\Code Dotnet\backend\tickethub\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
 F:\Project\Code Dotnet\backend\tickethub\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
+F:\Project\Code Dotnet\backend\tickethub\bin\Debug\net9.0\frontend\package-lock.json
+F:\Project\Code Dotnet\backend\tickethub\bin\Debug\net9.0\frontend\package.json
+F:\Project\Code Dotnet\backend\tickethub\bin\Debug\net9.0\AutoMapper.dll

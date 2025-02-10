@@ -5,6 +5,7 @@ namespace tickethub.Repositories
 {
     public class ApplicationDbContext:DbContext
     {
+        public DbSet<Admin> Admin { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Movie> Movies { get; set; }    
         public DbSet<MovieCast> MovieCasts { get; set; }
@@ -12,7 +13,8 @@ namespace tickethub.Repositories
         public DbSet<Theater> Theaters { get; set; }
         public DbSet<Showtime> Showtimes { get; set; }
         public DbSet<Booking> Bookings { get; set; }
-        public DbSet<Payment> Payments { get; set; }
+        public DbSet<BookedSeat> BookedSeats { get; set; }
+        public DbSet<Payment> Payments { get; set; }  
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

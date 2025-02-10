@@ -6,7 +6,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { IMAGE_MIN_BASE_URL } from '../constants/ApiConstants';
 
-// CSS
+// CSS  
 import '../pages/Home/Home.css';
 import { NavLink } from 'react-router-dom';
 
@@ -15,10 +15,9 @@ export default function SliderComp({ heading, getMovies, show }) {
 
     async function getData() {
         let res = await getMovies();
-        // console.log(res.data);
-        // console.log(res.data.results);
+        // console.log(res);
 
-        setData(res.data.results);
+        setData(res.data);
     }
 
     useEffect(() => {
@@ -75,7 +74,7 @@ export default function SliderComp({ heading, getMovies, show }) {
                                 return (
                                     <NavLink to={`/movie_details/${val.id}`} key={val.id} className='text-decoration-none'>
                                         <div className='card border-0'>
-                                            <img src={`${IMAGE_MIN_BASE_URL}${val.poster_path}`} className='card-img' />
+                                            <img src={`${IMAGE_MIN_BASE_URL}${val.posterPath}`} className='card-img' />
                                             {
                                                 show &&
                                                 <div className='card-img-overlay p-0'>
@@ -85,8 +84,8 @@ export default function SliderComp({ heading, getMovies, show }) {
                                             <div className='card-body p-0 pt-2'>
                                                 <h5 className='card-title text-wrap'>{val.title}</h5>
                                                 <p>
-                                                    {moment(val.release_date).format('MMM Do YYYY')}
-                                                    <span className='badge text-bg-dark float-end'>Ratng {Number(val.vote_average).toFixed(1)}</span>
+                                                    {moment(val.releaseDate).format('MMM Do YYYY')}
+                                                    <span className='badge text-bg-dark float-end'>Ratng {Number(val.voteAverage).toFixed(1)}</span>
                                                 </p>
                                             </div>
                                         </div>

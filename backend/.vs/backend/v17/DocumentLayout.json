@@ -7,20 +7,20 @@
       "RelativeMoniker": "D:0:0:{53C9D6CF-01F9-43F7-BA5C-D1BADF89F07B}|tickethub\\tickethub.csproj|solutionrelative:tickethub\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{53C9D6CF-01F9-43F7-BA5C-D1BADF89F07B}|tickethub\\tickethub.csproj|f:\\project\\code dotnet\\backend\\tickethub\\repositories\\implementations\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53C9D6CF-01F9-43F7-BA5C-D1BADF89F07B}|tickethub\\tickethub.csproj|solutionrelative:tickethub\\repositories\\implementations\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{53C9D6CF-01F9-43F7-BA5C-D1BADF89F07B}|tickethub\\tickethub.csproj|f:\\project\\code dotnet\\backend\\tickethub\\controllers\\emailcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53C9D6CF-01F9-43F7-BA5C-D1BADF89F07B}|tickethub\\tickethub.csproj|solutionrelative:tickethub\\controllers\\emailcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{53C9D6CF-01F9-43F7-BA5C-D1BADF89F07B}|tickethub\\tickethub.csproj|f:\\project\\code dotnet\\backend\\tickethub\\services\\implementations\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53C9D6CF-01F9-43F7-BA5C-D1BADF89F07B}|tickethub\\tickethub.csproj|solutionrelative:tickethub\\services\\implementations\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{53C9D6CF-01F9-43F7-BA5C-D1BADF89F07B}|tickethub\\tickethub.csproj|f:\\project\\code dotnet\\backend\\tickethub\\dto\\showtimedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53C9D6CF-01F9-43F7-BA5C-D1BADF89F07B}|tickethub\\tickethub.csproj|solutionrelative:tickethub\\dto\\showtimedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{53C9D6CF-01F9-43F7-BA5C-D1BADF89F07B}|tickethub\\tickethub.csproj|f:\\project\\code dotnet\\backend\\tickethub\\repositories\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53C9D6CF-01F9-43F7-BA5C-D1BADF89F07B}|tickethub\\tickethub.csproj|solutionrelative:tickethub\\repositories\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{53C9D6CF-01F9-43F7-BA5C-D1BADF89F07B}|tickethub\\tickethub.csproj|f:\\project\\code dotnet\\backend\\tickethub\\repositories\\interfaces\\ibookingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53C9D6CF-01F9-43F7-BA5C-D1BADF89F07B}|tickethub\\tickethub.csproj|solutionrelative:tickethub\\repositories\\interfaces\\ibookingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{53C9D6CF-01F9-43F7-BA5C-D1BADF89F07B}|tickethub\\tickethub.csproj|f:\\project\\code dotnet\\backend\\tickethub\\dto\\authenticateresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53C9D6CF-01F9-43F7-BA5C-D1BADF89F07B}|tickethub\\tickethub.csproj|solutionrelative:tickethub\\dto\\authenticateresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{53C9D6CF-01F9-43F7-BA5C-D1BADF89F07B}|tickethub\\tickethub.csproj|f:\\project\\code dotnet\\backend\\tickethub\\controllers\\bookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53C9D6CF-01F9-43F7-BA5C-D1BADF89F07B}|tickethub\\tickethub.csproj|solutionrelative:tickethub\\controllers\\bookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,58 +30,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AuthenticateResponse.cs",
-              "DocumentMoniker": "F:\\Project\\Code Dotnet\\backend\\tickethub\\DTO\\AuthenticateResponse.cs",
-              "RelativeDocumentMoniker": "tickethub\\DTO\\AuthenticateResponse.cs",
-              "ToolTip": "F:\\Project\\Code Dotnet\\backend\\tickethub\\DTO\\AuthenticateResponse.cs",
-              "RelativeToolTip": "tickethub\\DTO\\AuthenticateResponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-05T15:34:52.372Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "UserRepository.cs",
-              "DocumentMoniker": "F:\\Project\\Code Dotnet\\backend\\tickethub\\Repositories\\Implementations\\UserRepository.cs",
-              "RelativeDocumentMoniker": "tickethub\\Repositories\\Implementations\\UserRepository.cs",
-              "ToolTip": "F:\\Project\\Code Dotnet\\backend\\tickethub\\Repositories\\Implementations\\UserRepository.cs",
-              "RelativeToolTip": "tickethub\\Repositories\\Implementations\\UserRepository.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAgwBMAAAA7AAAAAAAAAA==",
+              "Title": "EmailController.cs",
+              "DocumentMoniker": "F:\\Project\\Code Dotnet\\backend\\tickethub\\Controllers\\EmailController.cs",
+              "RelativeDocumentMoniker": "tickethub\\Controllers\\EmailController.cs",
+              "ToolTip": "F:\\Project\\Code Dotnet\\backend\\tickethub\\Controllers\\EmailController.cs",
+              "RelativeToolTip": "tickethub\\Controllers\\EmailController.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwBAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-05T14:50:29.674Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "F:\\Project\\Code Dotnet\\backend\\tickethub\\Repositories\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "tickethub\\Repositories\\ApplicationDbContext.cs",
-              "ToolTip": "F:\\Project\\Code Dotnet\\backend\\tickethub\\Repositories\\ApplicationDbContext.cs",
-              "RelativeToolTip": "tickethub\\Repositories\\ApplicationDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-05T11:15:08.675Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UserService.cs",
-              "DocumentMoniker": "F:\\Project\\Code Dotnet\\backend\\tickethub\\Services\\Implementations\\UserService.cs",
-              "RelativeDocumentMoniker": "tickethub\\Services\\Implementations\\UserService.cs",
-              "ToolTip": "F:\\Project\\Code Dotnet\\backend\\tickethub\\Services\\Implementations\\UserService.cs",
-              "RelativeToolTip": "tickethub\\Services\\Implementations\\UserService.cs",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAkwEAAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-04T12:04:26.056Z",
+              "WhenOpened": "2025-02-10T13:14:35.427Z",
               "EditorCaption": ""
             },
             {
@@ -92,9 +53,48 @@
               "RelativeDocumentMoniker": "tickethub\\Controllers\\UserController.cs",
               "ToolTip": "F:\\Project\\Code Dotnet\\backend\\tickethub\\Controllers\\UserController.cs",
               "RelativeToolTip": "tickethub\\Controllers\\UserController.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAowFIAAABCAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-04T12:08:41.068Z",
+              "WhenOpened": "2025-02-10T13:13:41.303Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ShowtimeDTO.cs",
+              "DocumentMoniker": "F:\\Project\\Code Dotnet\\backend\\tickethub\\DTO\\ShowtimeDTO.cs",
+              "RelativeDocumentMoniker": "tickethub\\DTO\\ShowtimeDTO.cs",
+              "ToolTip": "F:\\Project\\Code Dotnet\\backend\\tickethub\\DTO\\ShowtimeDTO.cs",
+              "RelativeToolTip": "tickethub\\DTO\\ShowtimeDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-10T12:35:01.908Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IBookingRepository.cs",
+              "DocumentMoniker": "F:\\Project\\Code Dotnet\\backend\\tickethub\\Repositories\\Interfaces\\IBookingRepository.cs",
+              "RelativeDocumentMoniker": "tickethub\\Repositories\\Interfaces\\IBookingRepository.cs",
+              "ToolTip": "F:\\Project\\Code Dotnet\\backend\\tickethub\\Repositories\\Interfaces\\IBookingRepository.cs",
+              "RelativeToolTip": "tickethub\\Repositories\\Interfaces\\IBookingRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-10T12:23:59.763Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "BookingController.cs",
+              "DocumentMoniker": "F:\\Project\\Code Dotnet\\backend\\tickethub\\Controllers\\BookingController.cs",
+              "RelativeDocumentMoniker": "tickethub\\Controllers\\BookingController.cs",
+              "ToolTip": "F:\\Project\\Code Dotnet\\backend\\tickethub\\Controllers\\BookingController.cs",
+              "RelativeToolTip": "tickethub\\Controllers\\BookingController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-10T12:19:56.363Z",
               "EditorCaption": ""
             }
           ]

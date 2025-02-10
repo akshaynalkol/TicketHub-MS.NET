@@ -1,6 +1,7 @@
 ﻿using System.Numerics;
 using Microsoft.AspNetCore.Mvc;
 using tickethub.DTO;
+using tickethub.Entities;
 using tickethub.Services.Interfaces;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -11,7 +12,7 @@ namespace tickethub.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly IUserService userService;
+        private readonly IUserService userService;  
 
         // Constructor to inject IUserService
         public UserController(IUserService userService)
@@ -118,8 +119,8 @@ namespace tickethub.Controllers
             }
         }
 
-        // Add a new user
-        [HttpPost]
+       // Add a new user
+       [HttpPost]
         public async Task<IActionResult> AddAsync([FromBody] User user)
         {
             // Validate the model
@@ -140,6 +141,7 @@ namespace tickethub.Controllers
             // Return status code 201 (Created)
             return StatusCode(StatusCodes.Status201Created, new { message = "User Created Successfully" });
         }
+
 
         // Update an existing user
         [Helper.Authorize]

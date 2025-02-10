@@ -1,7 +1,8 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { API_KEY, IMAGE_MAX_BASE_URL, IMAGE_MIN_BASE_URL, TRENDING_API_URL } from '../constants/ApiConstants';
+import { API_KEY, IMAGE_MAX_BASE_URL, IMAGE_MIN_BASE_URL } from '../constants/ApiConstants';
+import { getMovies } from '../services/MovieService';
 
 export default function Banner() {
     const [data, setData] = useState([])
@@ -10,12 +11,11 @@ export default function Banner() {
 
     async function getData() {
         setLoading(true);
-        let res = await axios.get(TRENDING_API_URL)
+        let res = await getMovies("Trending");
         // console.log(res)
-        // console.log(res.data.results);
 
         setLoading(false);
-        setData(res.data.results);
+        setData(res.data);
     }
 
     useEffect(() => {
@@ -27,7 +27,7 @@ export default function Banner() {
         // console.log(res);
         // console.log(res.data.results);
 
-        setKey(res.data.results[index].key)
+        setKey(res.data.results[index].key)      
         // console.log(id);
         // console.log(key)
     }
@@ -49,19 +49,19 @@ export default function Banner() {
                         data.map((val, index) => {
                             return (
                                 <div className={`carousel-item ${index === 1 ? 'active' : ''} `} key={index}>
-                                    <img src={`${IMAGE_MAX_BASE_URL}${val.backdrop_path}`} alt='Movie Poster'
+                                    <img src={`${IMAGE_MAX_BASE_URL}${val.backdropPath}`} alt='Movie Poster'
                                         className='w-100 vh-100' />
                                     <div class="carousel-caption text-start col-lg-5 col-md-7 col-12 start-0 top-0 p-0 px-5" >
-                                        <img src={`${IMAGE_MIN_BASE_URL}${val.poster_path}`}
+                                        <img src={`${IMAGE_MIN_BASE_URL}${val.posterPath}`}
                                             className='' height={300} />
-                                        <h3 className='fw-bold pt-2'>{val.original_title}</h3>
+                                        <h3 className='fw-bold pt-2'>{val.title}</h3>
                                         <p className='mb-2' style={{ textAlign: 'justify' }}>{val.overview}</p>
                                         <p>
-                                            Rating : {Number(val.vote_average).toFixed(1)} &nbsp;|&nbsp;
-                                            View : {Number(val.vote_count).toFixed(0)}
+                                            Rating : {Number(val.voteAverage).toFixed(1)} &nbsp;|&nbsp;
+                                            View : {Number(val.voteCount).toFixed(0)}
                                         </p>
                                         <button type="button" className="btn btn-light px-5 py-2 fw-bold" data-bs-toggle="modal"
-                                            data-bs-target="#staticBackdrop" onClick={() => handlePlay(val.id, index)}>
+                                            data-bs-target="#staticBackdrop" onClick={() => handlePlay(val.movieId, index)}>
                                             Play Now
                                         </button>
                                     </div>
