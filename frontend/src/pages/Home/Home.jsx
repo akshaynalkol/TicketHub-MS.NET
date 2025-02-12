@@ -5,9 +5,9 @@ import Box from '../../components/Box'
 import { getMovies } from '../../services/MovieService'
 
 export default function Home() {
-    return (
+    return (   
         <>
-            <Banner />
+            <Banner />    
             <SliderComp heading="Upcoming" getMovies={() => getMovies("Upcoming")} show={true} />
             <SliderComp heading="Now Playing" getMovies={() => getMovies("NowPlaying")} />
             <Box />

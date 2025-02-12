@@ -7,7 +7,7 @@ const MovieCastDetails = ({ id }) => {
 
     const getData = async () => {
         const res = await getMoviesCast(id);
-        // console.log(res);
+        console.log(res);
 
         setData(res.data);
         setCast(res.data.casts);
@@ -21,10 +21,10 @@ const MovieCastDetails = ({ id }) => {
         <>
 
             <p className='border-top pt-2 mb-2'>
-                Director : {data?.writer ?  data?.director : "Not Available"}
+                Director : {data?.director != null ? data.director : "Not Available"}
             </p>
             <p className='border-top border-bottom pt-2 pb-2'>
-                Writer : {data?.writer ? data?.writer : "Not Available"}
+                Writer : {data?.writer!=null ? data.writer : "Not Available"}
             </p>
             <div className='row gy-4'>
                 <h4 className='fw-bold'>Cast :</h4>

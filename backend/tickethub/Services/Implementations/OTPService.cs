@@ -14,6 +14,7 @@ namespace tickethub.Services.Implementations
         // Using ConcurrentDictionary for thread safety
         private static readonly ConcurrentDictionary<string, string> _otpStorage = new ConcurrentDictionary<string, string>();
 
+
         public OtpService(IEmailService emailService)
         {
             _emailService = emailService;
@@ -43,15 +44,21 @@ namespace tickethub.Services.Implementations
             return otp; // Return OTP for verification
         }
 
+
         // Verify OTP
-        public bool VerifyOtp(string email, string enteredOtp)
+        public async Task<bool> VerifyOtp(string email, string enteredOtp)
         {
             if (_otpStorage.TryGetValue(email, out string storedOtp) && storedOtp == enteredOtp)
             {
                 _otpStorage.TryRemove(email, out _); // Remove OTP after verification
-                return true;
+                return await Task.FromResult(true); // Ensure async return
             }
-            return false;
+            return await Task.FromResult(false);
         }
+
+
+
+
+
     }
 }

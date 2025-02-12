@@ -10,7 +10,7 @@ export const IMAGE_MIN_BASE_URL = 'https://image.tmdb.org/t/p/w200';
 export const IMAGE_MAX_BASE_URL ='https://image.tmdb.org/t/p/original';
 
 
-// 
+// APIS
 export const USER_BASE_URL='http://localhost:5266/user/'
 export const MOVIE_BASE_URL='http://localhost:5266/movie/'   
 export const TICKET_BASE_URL='http://localhost:5266/tickets/'

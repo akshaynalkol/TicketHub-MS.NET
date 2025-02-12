@@ -9,7 +9,7 @@ public class User : BaseEntity
     [Column("name")]
     public string Name { get; set; }
 
-    [MaxLength(25)]
+    [MaxLength(50)]
     [Column("email")]
 
     [EmailAddress(ErrorMessage ="Email is incorrect")]
@@ -29,13 +29,13 @@ public class User : BaseEntity
     public string Gender { get; set; }
 
     [Column("role")]
-    public string Role { get; set; }
+    [MaxLength(25)]
+    public string? Role { get; set; }
 
     [MaxLength(25)]
     [Column("marital_status")]
     public string MaritalStatus { get; set; }
 
-    [MaxLength(50)]
     [Column("password")]
     public string? Password { get; set; }
 }

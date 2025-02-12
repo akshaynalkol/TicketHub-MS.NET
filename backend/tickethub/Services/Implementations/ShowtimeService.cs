@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using AutoMapper;
 using tickethub.DTO;
 using tickethub.Services;
 using ticketHub.Repositories.Interfaces;
@@ -11,12 +10,10 @@ namespace ticketHub.Services.Implementations
     public class ShowtimeService : IShowtimeService
     {
         private readonly IShowtimeRepository _showtimeRepository;
-        private readonly IMapper _mapper;
 
-        public ShowtimeService(IShowtimeRepository showtimeRepository, IMapper mapper)
+        public ShowtimeService(IShowtimeRepository showtimeRepository)
         {
             _showtimeRepository = showtimeRepository;
-            _mapper = mapper;
         }
 
         //public List<ShowtimeDTO> GetShowtimesByMovie(long movieId)

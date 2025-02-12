@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using tickethub.DTO;
 using tickethub.Entities;
+using tickethub.Services.Implementations;
 using tickethub.Services.Interfaces;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -12,12 +13,14 @@ namespace tickethub.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly IUserService userService;  
+        private readonly IUserService userService;
+        private readonly IOtpService otpService;
 
         // Constructor to inject IUserService
-        public UserController(IUserService userService)
+        public UserController(IUserService userService, IOtpService otpService)
         {
             this.userService = userService;
+            this.otpService = otpService;
         }
 
         // Get all users
@@ -71,19 +74,62 @@ namespace tickethub.Controllers
             return Ok(response);  
         }
 
-        // Authenticate user
-        [HttpPost("authenticate")]
+        //// Authenticate user
+        //[HttpPost("authenticate")]
+        //public async Task<IActionResult> AuthenticateAsync([FromBody] AuthenticateRequest authenticateRequest)
+        //{
+        //    var response = await userService.AuthenticateAsync(authenticateRequest.Email, authenticateRequest.Password);
+        //    if (response == null)
+        //    {
+        //        // Return status code 401 if authentication fails
+        //        return Unauthorized(new { message = "Invalid credentials" });  
+        //    }
+        //    // Return status code 200 with authenticated user data
+        //    return Ok(response);  
+        //}
+
+
+
+        // Authenticate user and send OTP
+        [HttpPost("signin")]
         public async Task<IActionResult> AuthenticateAsync([FromBody] AuthenticateRequest authenticateRequest)
         {
             var response = await userService.AuthenticateAsync(authenticateRequest.Email, authenticateRequest.Password);
             if (response == null)
             {
-                // Return status code 401 if authentication fails
-                return Unauthorized(new { message = "Invalid credentials" });  
+                return Unauthorized(new { message = "Invalid credentials" });
             }
-            // Return status code 200 with authenticated user data
-            return Ok(response);  
+
+            // Send OTP to the authenticated user's email
+            await otpService.SendOtpAsync(authenticateRequest.Email);
+
+            return Ok(new { message = "OTP sent to your email.", user = response });
         }
+
+
+        // Send OTP separately if needed (e.g., forgot password)
+        [HttpPost("sendOTP")]
+        public async Task<IActionResult> SendOTPAsync([FromBody] OTPRequest otpRequest)
+        {
+            await otpService.SendOtpAsync(otpRequest.Email);
+            return Ok(new { message = "OTP sent to your email." });
+        }
+
+
+        // Verify OTP
+        [HttpPost("verifyOTP")]
+        public async Task<IActionResult> VerifyOTPAsync([FromBody] OTPVerifyRequest otpVerifyRequest)
+        {
+            bool isVerified = await otpService.VerifyOtp(otpVerifyRequest.Email, otpVerifyRequest.OTP);
+            if (isVerified)
+            {
+                return Ok(new { message = "Login Successful" });
+            }
+            return BadRequest(new { message = "Invalid OTP or OTP expired" });
+        }
+
+
+
 
         // Authenticate Email
         [HttpGet("validateEmail")]
@@ -120,7 +166,7 @@ namespace tickethub.Controllers
         }
 
        // Add a new user
-       [HttpPost]
+       [HttpPost("signup")]
         public async Task<IActionResult> AddAsync([FromBody] User user)
         {
             // Validate the model
@@ -144,14 +190,14 @@ namespace tickethub.Controllers
 
 
         // Update an existing user
-        [Helper.Authorize]
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateAsync(int id, [FromBody] User user)
+        //[Helper.Authorize]
+        [HttpPut("updateUser/{id}")]
+        public async Task<IActionResult> UpdateAsync(long id, [FromBody] User user)
         {
             if (id != user.Id)
             {
                 // Return status code 400 if ID mismatch
-                return BadRequest(new { message = "User ID mismatch" });
+                return BadRequest(new { message = "User ID mismatch" });  
             }
 
             var existingUser = await userService.GetByIdAsync(id);
@@ -168,8 +214,8 @@ namespace tickethub.Controllers
 
         // Delete a user by ID
         [Helper.Authorize]
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteAsync(int id)
+        [HttpDelete("deleteUser/{id}")]
+        public async Task<IActionResult> DeleteAsync(long id)
         {
             var user = await userService.GetByIdAsync(id);
             if (user == null)

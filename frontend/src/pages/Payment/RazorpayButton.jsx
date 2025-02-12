@@ -13,6 +13,7 @@ const RazorpayButton = ({ handlePayment }) => {
         borderRadius: "5px",
         cursor: "pointer",
       }}
+      className="btn btn-info"
     >
       Pay Now
     </button>

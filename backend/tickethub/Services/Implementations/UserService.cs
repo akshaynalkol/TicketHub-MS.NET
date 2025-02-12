@@ -1,5 +1,4 @@
 ﻿using tickethub.DTO;
-using tickethub.Entities;
 using tickethub.Helper;
 using tickethub.Repositories;
 using tickethub.Repositories.Interfaces;
@@ -23,10 +22,11 @@ namespace tickethub.Services.Implementations
         {
             User user=await userRepository.AuthenticateAsync(email, password);
             if (user == null) return null;
+            //if (user == null || !PasswordHelper.VerifyPassword(email, user.Email)) return null;
             // Authentication successful so generate jwt token
             JwtTokenGenerator jwtTokenGenerator = new JwtTokenGenerator(configuration);
 ;           var token = jwtTokenGenerator.generateJwtToken(user);
-            return new AuthenticateResponse(user, token);
+            return new AuthenticateResponse(user, token);   
         }
 
         public async Task<User> ValidateEmailAsync(string email)
@@ -74,7 +74,7 @@ namespace tickethub.Services.Implementations
             return await userRepository.GetAsync(); 
         }
 
-        public async Task<User> GetByIdAsync(int id)
+        public async Task<User> GetByIdAsync(long id)
         {
             return await userRepository.GetByIdAsync(id);
         }
@@ -84,7 +84,7 @@ namespace tickethub.Services.Implementations
             await userRepository.UpdateAsync(user);
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task DeleteAsync(long id)
         {
             await userRepository.DeleteAsync(id);
         }

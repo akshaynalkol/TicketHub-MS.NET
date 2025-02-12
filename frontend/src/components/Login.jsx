@@ -4,7 +4,7 @@ import SignUp from './SignUp';
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { verifyOTP } from '../services/UserService';
+import { signInUser, verifyOTP } from '../services/UserService';
 import { closeModel } from '../constants/Utils';
 import { authenticateService } from '../services/AuthenticateService';
 
@@ -22,12 +22,12 @@ export default function Login({ user, setUser }) {
     } = useForm()
 
     const onSubmit = async (user) => {
-        console.log(user);
+        // console.log(user);
         if (step === 1) {
             try {
                 // let res = await signInUser(user);   
 
-                let res=await authenticateService(user);
+                let res=await signInUser(user);
                 // console.log(res);
                 toast.success(res.data.message);
                 setData(res?.data?.user || res?.data?.theaterOwner || res?.data?.admin); 
@@ -40,7 +40,7 @@ export default function Login({ user, setUser }) {
             }
         }
         else {
-            console.log(data);
+            // console.log(data);
             let dataa={
                 email:data.email,
                 otp:user.otp

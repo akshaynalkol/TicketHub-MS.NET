@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using tickethub.Helper;
 using tickethub.Repositories.Interfaces;
-using tickethub.Services.Implementations;
 
 namespace tickethub.Repositories.Implementations
 {
@@ -10,6 +10,8 @@ namespace tickethub.Repositories.Implementations
         {
             using (var ctx = new ApplicationDbContext())
             {
+                //user.Password = PasswordHelper.HashPassword(user.Password);
+                user.Role = "User";
                 ctx.Users.Add(user);
                 await ctx.SaveChangesAsync();
             }
@@ -18,7 +20,7 @@ namespace tickethub.Repositories.Implementations
         public async Task<User> AuthenticateAsync(string email, string password)
         {
             using (var ctx = new ApplicationDbContext()) { 
-                return await ctx.Users.FirstOrDefaultAsync(u=>u.Email == email && u.Password==password);
+                return await ctx.Users.FirstOrDefaultAsync(u=>u.Email == email);
             }
         }
 
@@ -46,7 +48,7 @@ namespace tickethub.Repositories.Implementations
             }
         }
 
-        public async Task<User> GetByIdAsync(int id)
+        public async Task<User> GetByIdAsync(long id)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -70,7 +72,7 @@ namespace tickethub.Repositories.Implementations
             }
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task DeleteAsync(long id)
         {
             using (var ctx = new ApplicationDbContext())
             {

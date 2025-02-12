@@ -12,8 +12,7 @@ export default function NavBar({ user, setUser }) {
     const [suggestion, setSuggestion] = useState([]);
     const [showSuggestions, setShowSuggestions] = useState(false);
 
-    console.log(user);
-
+    // console.log(user);
 
     useEffect(() => {
         if (key.length > 0) {

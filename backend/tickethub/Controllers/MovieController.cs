@@ -17,10 +17,10 @@ namespace ticketHub.Controllers
             this.movieService = movieService;
         }
 
-        [HttpGet("type/{type}")] // Fixed the conflicting route
+        [HttpGet("type/{type}")] // Fixed the conflicting route    
         public async Task<ActionResult<IEnumerable<MovieDTO>>> GetMoviesByType(string type)
         {
-            var movies = await movieService.GetMoviesByTypeAsync(type);
+            var movies = await movieService.GetMoviesByTypeAsync(type);  
             return Ok(movies);
         }
 
@@ -53,7 +53,7 @@ namespace ticketHub.Controllers
             [FromQuery] string? status, 
             [FromQuery] string? category,  
             [FromQuery] double? rating, 
-            [FromQuery] string type)
+            [FromQuery] string type) 
         {
             var movies = await movieService.GetFilteredMoviesAsync(status, category, rating, type);
             return Ok(movies);

@@ -7,11 +7,11 @@ import { toast } from "react-toastify";
 import { getBookingById } from "../../services/BookingService";
 
 export default function Payment() {
-    const { bookingId } = useParams();
+    // const { bookingId } = useParams();
     const navigate = useNavigate();
-    const [total, setTotal] = useState(0);
-    // const [bookingId, setBookingId] = useState(bookingId); // Dummy booking ID, replace with actual one
-    const [user, setUser] = useState(() => {
+    const [total, setTotal] = useState(150);
+    const [bookingId, setBookingId] = useState(1); // Dummy booking ID, replace with actual one
+    const [user, setUser] = useState(() => {  
         const storedUser = sessionStorage.getItem('user_details');
         return storedUser ? JSON.parse(storedUser) : null;
     });
@@ -23,7 +23,7 @@ export default function Payment() {
     const handlePayment = async () => {
         try {
             // Step 1: Call backend to create Razorpay Order
-            const { data } = await axios.post("http://localhost:8080/api/payments/create", null, {
+            const { data } = await axios.post("http://localhost:5266/payments/create", null, {
                 params: {
                     bookingId: bookingId,
                     amount: total,
@@ -41,24 +41,24 @@ export default function Payment() {
             const options = {
                 key: "rzp_test_VqjhtrIWr2XzSD", // Replace with your Razorpay test key
                 amount: order.amount,
-                currency: order.currency,
+                order_id: order, // Razorpay Order ID from backend
+                currency: "INR",
                 name: "TicketHub",
                 description: "Movie Ticket Payment",
-                order_id: order.id, // Razorpay Order ID from backend
                 handler: async function (response) {
                     toast.success("Payment Successful!!!");
 
                     // Step 3: Call API to update payment status
-                    await axios.post("http://localhost:8080/api/payments/success", null, {
+                    await axios.post("http://localhost:5266/payments/success", null, {
                         params: {
-                            orderId: order.id,
+                            orderId: order,
                             transactionId: response.razorpay_payment_id,
                         },
                     });
 
                     // alert("Payment recorded successfully!");
                     // Navigate to Ticket Page after Payment Success
-                    navigate("/ticket", { state: { bookingId: order.id } });
+                    navigate(`/ticket/${bookingId}`);
 
                 },
                 prefill: {

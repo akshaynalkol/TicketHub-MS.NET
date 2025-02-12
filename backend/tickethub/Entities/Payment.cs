@@ -22,6 +22,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.SqlTypes;
 
 public class Payment : BaseEntity
 {
@@ -40,6 +41,14 @@ public class Payment : BaseEntity
     [Column("payment_status")]
     [MaxLength(25)]
     public string PaymentStatus { get; set; }
+
+    [MaxLength(50)]
+    [Column("transaction_id")]  
+    public String TransactionId { get; set; } // Razorpay Payment ID
+
+    [MaxLength(50)]
+    [Column("order_id")]
+    public String OrderId { get; set; } // Razorpay Order ID
 
     [ForeignKey("Booking")]
     [Column("bookingId")]

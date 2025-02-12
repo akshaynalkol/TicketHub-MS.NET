@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast } from 'react-toastify';
-import { signUpUser, validateEmail, validatePhoneNo } from '../services/UserService';
+import { useForm } from 'react-hook-form';
 import { closeModel } from '../constants/Utils';
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { signUpUser, validateEmail, validatePhoneNo } from '../services/UserService';
 
 export default function SignUp() {
     const [emailChecked, setEmailChecked] = useState(false);
@@ -60,7 +60,7 @@ export default function SignUp() {
         }
 
         const user = data;
-        console.log(user);
+        // console.log(user);
 
         try {
             let res = await signUpUser(user);

@@ -5,6 +5,6 @@ namespace tickethub.Services.Interfaces
     {
         string GenerateOtp();
         Task<string> SendOtpAsync(string email);
-        bool VerifyOtp(string email, string enteredOtp);
+        Task<bool> VerifyOtp(string email, string enteredOtp);
     }
 }
