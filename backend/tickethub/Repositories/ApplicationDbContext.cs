@@ -19,7 +19,7 @@ namespace tickethub.Repositories
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseMySql("Server=localhost;Database=dotnettickethub;User=root;Password=Akshay@6;",
+            optionsBuilder.UseMySql("Server=localhost;Database=dotnettickethub;User=root;Password=;",
                 new MySqlServerVersion(new Version(8, 0, 21)));
         }
 

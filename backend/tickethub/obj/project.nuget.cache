@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kgYOYRsMEDc=",
+  "dgSpecHash": "I5/ku1zh3Z8=",
   "success": true,
-  "projectFilePath": "F:\\Project\\Code\\Dotnet\\TicketHub-MS.NET\\backend\\tickethub\\tickethub.csproj",
+  "projectFilePath": "F:\\Project\\Code Dotnet\\backend\\tickethub\\tickethub.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DDR\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\DDR\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
